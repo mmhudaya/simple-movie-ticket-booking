@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="164px" height="38px" viewBox="0 0 164 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>atoms/badge/ribbon/ribbon-folded-medium red</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="41.4611686%" y1="100%" x2="64.9567117%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#D22323" offset="0%"></stop>
+            <stop stop-color="#DD3636" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="02-Movie-Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="GTX-D220-Movie-Detail-Components" transform="translate(-190.000000, -125.000000)">
+            <g id="atoms/badge/ribbon/ribbon-folded-small" transform="translate(190.000000, 125.000000)">
+                <path d="M3.45280103e-16,12.819426 C-2.00617683e-16,8.3618323 0.464128056,6.74540111 1.33566352,5.11577148 C2.20719898,3.48614185 3.48614185,2.20719898 5.11577148,1.33566352 C6.74540111,0.464128056 8.3618323,-2.52922381e-15 12.819426,-4.80608715e-16 L161.999513,-1.77635684e-15 C163.104082,-2.86744138e-15 163.999513,0.8954305 163.999513,2 C163.999513,2.28682355 163.93782,2.57029178 163.81862,2.83117318 L158.258529,15 L163.81862,27.1688268 C164.277664,28.173492 163.835351,29.360063 162.830686,29.8191072 C162.569805,29.9383073 162.286336,30 161.999513,30 L8,30 L8,38 L-4.03896783e-28,30 L3.45280103e-16,12.819426 Z" id="🎨-Change-Color" fill="url(#linearGradient-1)" fill-rule="evenodd"></path>
+                <polygon id="Rectangle-3" fill="#000000" fill-rule="evenodd" opacity="0.3" transform="translate(4.000000, 34.000000) scale(1, -1) translate(-4.000000, -34.000000) " points="8 30 8 38 0 38"></polygon>
+                <text id="✏️-Text" font-family="MaisonNeue-Demi, Maison Neue" font-size="18" font-weight="400" line-spacing="24"></text>
+            </g>
+        </g>
+    </g>
+</svg>

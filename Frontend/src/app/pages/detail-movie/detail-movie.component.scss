@@ -1,0 +1,214 @@
+.detail-movie-container{
+    max-width: 45rem;
+    font-weight: normal;
+    padding: 0rem 0.6rem;
+    overflow: hidden;
+    flex: 1 1 0%;
+    margin: 10px auto 0rem !important;
+}
+
+.movie-card{    
+    margin-bottom: 15px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 2px 6px 0 rgba(0,0,0,.22);
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,.22);
+}
+
+.detail-movie-breadcrumb{
+    display: flex;
+    max-width: 100%;
+    margin: 10px 0px;
+}
+
+.movie-title{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.movie-content-bottom{
+    color: rgb(73, 74, 74);
+    opacity: 0.5;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.movie-poster-overview{
+    width: 80px;
+    height: auto;
+}
+
+.date-month{
+    font-weight: bold;
+    font-size: 21px;
+}
+
+.movie-overview{
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: start;
+    -moz-justify-content: flex-start;
+    justify-content: flex-start;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-align: start;
+    -moz-align-items: flex-start;
+    align-items: flex-start;
+}
+
+.show-info{
+    width: 100%;
+    padding: 0 0 0 10px;
+    margin: 0;
+
+
+    li {
+        padding: 0 0 10px;
+        
+        p{
+            margin: 0;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 20px;
+            text-align: left;
+        }
+
+    }
+}
+
+.movie-title-info{
+    position: relative;
+    top: -10px;
+    font-weight: bold;
+}
+
+.info-item{
+    text-align: right !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+}
+
+.total-money{
+    font-size: 24px;
+    line-height: 24px;
+    color: #00aa13;
+    font-weight: 700;
+}
+
+// Modal
+.modal-title{
+    color: rgb(28, 29, 29);
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 20px;
+    text-align: left;
+    margin: 0px;
+}
+
+.modal-btn-close{
+    position: relative;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+// Form
+.date-btn{
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: -1px;
+    cursor: pointer;
+    position: relative;
+    width: 150px;
+    list-style: none;
+    padding: 0.5rem 1.2rem;
+}
+
+.date-selected{
+    background-color: #1E87EF;
+    color: white;
+    border: 1px solid rgb(30, 51, 239);
+}
+
+.time-btn{
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding: 5px 16px;
+    border-radius: 14px;
+    border: 1px solid #d2d2d2;
+    color: #1c1d1d;
+    background-color: #fff;
+    outline: none;
+    cursor: pointer;
+}
+
+.time-btn:disabled{
+    color: #959797;
+    border: 1px solid #d2d2d2;
+}
+
+
+.selected-time-btn{
+    border: 1px solid #0090da;
+    color: #fff;
+    background-color: #0090da;
+}
+
+.time-btn:hover:enabled{
+    border: 1px solid #0090da;
+    color: #fff;
+    background-color: #0090da;
+}
+
+.ticket-input{
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: row;
+    height: 30px;
+    width: 110px;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(210, 210, 210);
+    border-image: initial;
+    padding: 7px 0px;
+
+    button{
+        color: #1E87EF;
+        cursor: pointer;
+        outline-offset: 0px;
+        font-family: MaisonNeueBold, sans-serif;
+        font-size: 21px;
+        font-weight: bold;
+        outline: -webkit-focus-ring-color none 0px;
+        background: transparent;
+        border-width: initial;
+        border-style: none;
+        border-color: initial;
+        border-image: initial;
+        padding: 0px 10px;
+    }
+
+    span{
+        color: rgb(0, 0, 0);
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        padding: 0px 20px;
+    }
+}
+
+.negative-btn:disabled{
+    color: rgb(92, 168, 243) !important;
+    // color: red;
+}

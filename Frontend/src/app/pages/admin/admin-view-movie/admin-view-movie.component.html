@@ -1,0 +1,183 @@
+
+<div class="uk-container uk-margin-large-bottom uk-margin-small-top">
+    <!-- Header -->
+    <div class="uk-width-1-1 uk-first-column">
+        <!-- Breadcrumbs -->
+        <div class="uk-margin-bottom">
+            <ul class="uk-breadcrumb">
+                <li><a href="/admin/movie/list">Dashboard</a></li>
+                <li><a class="uk-disabled" href="/admin/movie/list">Movies</a></li>
+            </ul>
+        </div>
+        <!-- Header -->
+        <div class="uk-flex uk-flex-between uk-width-1-1">
+            <div class="uk-margin-bottom catalog-header">
+                <h1>List Movie</h1>
+            </div>
+            
+            <div class="uk-flex uk-flex-bottom uk-margin-bottom">
+                <button uk-toggle="target: #movie-add" class="uk-button uk-button-secondary uk-margin-small-right">Add Movie</button>
+                <button  uk-toggle="target: #studio-add" class="uk-button uk-button-secondary">Add Studio</button>
+            </div>
+        </div>
+    </div>
+        
+    <div *ngIf="!tableLoaded" class="uk-position-center" uk-spinner="ratio: 5"></div>
+
+    <ng-container *ngIf="tableLoaded">
+        <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-responsive uk-table-striped uk-table-justify uk-table-middle uk-table-divider">
+                <thead>
+                    <tr>
+                        <th class="uk-table-small">Poster</th>
+                        <th class="uk-table-expand">Name</th>
+                        <th>Action</th>
+                        <!-- <th class="uk-table-shrink uk-text-nowrap">Shrink + Nowrap</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngIf="movies.length <= 0">
+                        <tr>
+                            <td colspan=6 class="uk-text-center">There's no movie yet</td>
+                        </tr>
+                    </ng-container>
+                    <ng-container *ngIf="movies.length > 0">
+                        <tr *ngFor="let movie of movies | paginate: { itemsPerPage: 5, currentPage: currentPage }">
+                            <td><img class="uk-preserve-width" [src]="movie.image | base64StrToImg: _sanitizer" width="40" alt=""></td>
+                            <td>
+                                <b>{{movie.name}}</b>
+                            </td>
+                            <td >
+                                <!-- <button class="uk-margin-small-right uk-button uk-button-primary">Publish</button> -->
+                                <button [routerLink]="['/admin/movie/update/' + movie.id]"  class="uk-margin-small-right uk-button uk-button-secondary"><span  uk-icon="file-edit"></span></button>
+                                <button (click)="deleteMovie(movie)" class="uk-margin-small-right uk-button uk-button-danger"><span  uk-icon="trash"></span></button>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+
+        <pagination-controls class="uk-pagination uk-flex uk-margin uk-flex-right" (pageChange)="currentPage = $event"></pagination-controls>
+    </ng-container>
+</div>
+
+
+<!-- This is the modal -->
+<div uk-modal id="movie-add" class="uk-modal-container">
+    <div class="uk-modal-dialog uk-modal-body">
+        <div class="uk-container">
+            <div class="uk-grid-collapse uk-child-width-1-1 uk-flex-middle uk-grid uk-grid-stack">
+                <div class="additional-border-top uk-position-relative uk-background-cover uk-background-center-center modal-inner-wrap uk-first-column">
+                    <!-- Modal Header -->
+                    <div class="uk-modal-title uk-flex uk-flex-between">
+                        <!-- Modal Title -->
+                        <div class="uk-flex uk-flex-middle">
+                            <button id="back-btn" uk-icon="icon: arrow-left; ratio: 2" class="uk-button text-fuchsia uk-modal-close-default uk-padding-remove modal-btn-close uk-icon"></button>
+                            <p class="uk-text-center modal-title">Add Movie</p>
+                        </div>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="uk-grid uk-margin-bottom uk-margin-top">
+                        <!-- ticket form -->
+                        <div class="uk-width-expand@m ticket-form">
+                            <form class="uk-form-stacked">
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="form-stacked-text">Movie Name</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" [ngModelOptions]="{standalone: true}" [(ngModel)]="addMovie.name" id="form-stacked-text" type="text" placeholder="ex: Ada Apa Dengan Cinta">
+                                    </div>
+                                </div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="form-stacked-text">PG Rate</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" [ngModelOptions]="{standalone: true}" [(ngModel)]="addMovie.pg_rate" id="form-stacked-text" type="text" placeholder="ex: Semua Umur">
+                                    </div>
+                                </div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="form-stacked-text">Duration</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" min=0 [ngModelOptions]="{standalone: true}" [(ngModel)]="addMovie.duration" id="form-stacked-text" type="number" placeholder="(in minutes)">
+                                    </div>
+                                </div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="form-stacked-text">Cast</label>
+                                    <div class="uk-form-controls">
+                                        <textarea  class="uk-textarea" id="form-stacked-text" [ngModelOptions]="{standalone: true}" [(ngModel)]="addMovie.cast" type="text" placeholder="ex: Kasih, Kisah"></textarea>
+                                    </div>
+                                </div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="form-stacked-text">Synopsis</label>
+                                    <div class="uk-form-controls">
+                                        <textarea  class="uk-textarea" id="form-stacked-text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="addMovie.synopsis"  type="text" placeholder=""></textarea>
+                                    </div>
+                                </div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="form-stacked-text">Image</label>
+                                    <div class="uk-form-controls">
+                                        <div uk-form-custom="target: true">
+                                            <input (change)="onChangeImageFile($event)" type="file">
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Select file" disabled>
+                                            <button class="uk-button uk-button-default" type="button" tabindex="-1">Select</button>
+                                        </div>
+                                        <div class="uk-margin">
+                                            <img style="max-width:300px; height: auto" *ngIf="addMovie.image != '' && addMovie.image != null" [src]="addMovie.image | base64StrToImg: _sanitizer">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="uk-modal-footer uk-text-right">
+            <button (click)="resetAddForm()" [disabled]="submittingAddForm" class="uk-button uk-margin-small-right uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button [disabled]="isFormAddMovieValid() || submittingAddForm" (click)="onAddMovie()" class="uk-button uk-button-primary" type="button">Save</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Add Studio -->
+<div uk-modal id="studio-add" class="uk-modal-container">
+    <div class="uk-modal-dialog uk-modal-body">
+        <div class="uk-container">
+            <div class="uk-grid-collapse uk-child-width-1-1 uk-flex-middle uk-grid uk-grid-stack">
+                <div class="additional-border-top uk-position-relative uk-background-cover uk-background-center-center modal-inner-wrap uk-first-column">
+                    <!-- Modal Header -->
+                    <div class="uk-modal-title uk-flex uk-flex-between">
+                        <!-- Modal Title -->
+                        <div class="uk-flex uk-flex-middle">
+                            <button id="back-btn" uk-icon="icon: arrow-left; ratio: 2" class="uk-button text-fuchsia uk-modal-close-default uk-padding-remove modal-btn-close uk-icon"></button>
+                            <p class="uk-text-center modal-title">Add Studio</p>
+                        </div>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="uk-grid uk-margin-bottom uk-margin-top">
+                        <!-- ticket form -->
+                        <div class="uk-width-expand@m ticket-form">
+                            <form class="uk-form-stacked">
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="form-stacked-text">Studio Name</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" [ngModelOptions]="{standalone: true}" [(ngModel)]="addStudio.name" id="form-stacked-text" type="text" placeholder="ex: Studio VVIP 32">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="uk-modal-footer uk-text-right">
+            <button (click)="resetAddForm()" [disabled]="submittingAddForm" class="uk-button uk-margin-small-right uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button [disabled]="isFormAddStudioValid() || submittingAddForm" (click)="onAddStudio()" class="uk-button uk-button-primary" type="button">Save</button>
+        </div>
+    </div>
+    
+</div>

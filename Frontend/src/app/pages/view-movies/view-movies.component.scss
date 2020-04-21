@@ -1,0 +1,44 @@
+.card{
+    margin-bottom: 15px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 2px 6px 0 rgba(0,0,0,.22);
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,.22);
+}
+
+// .card:last-child{
+//     margin-bottom: 0;
+// }
+
+.card-body{
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+
+// Movies
+.movies-poster-wrap{
+    position: relative;
+}
+
+.movie-badge{
+    position: absolute;
+    top: -12px;
+    background-color: transparent;
+    z-index: 100;
+    left: -8px;
+}
+
+.text-badge{
+    position: absolute;
+    left: 12px;
+    top: 9px;
+    color: #fff;
+    font-family: MaisonNeueMedium,sans-serif;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 12px;
+    font-size: 9px;
+    font-size: 16px;
+}
+
